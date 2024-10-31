@@ -9,11 +9,8 @@ function openModal(popupType) {
 
 function handleClosePopup(evt) {
     if (evt.target.className === 'popup__close' || evt.target.classList.contains('popup') || evt.key === 'Escape') {
-        document.querySelectorAll('.popup').forEach(popup => {
-            if (popup.classList.contains('popup_is-opened')) {
-                closeModal(popup);
-            }
-        });
+        const popup = document.querySelector('.popup_is-opened');
+        closeModal(popup);
     }
 }
     
