@@ -1,6 +1,5 @@
 //для функций для работы с карточками(создание, лайк, удаление)
-import { openPopupCard } from "../scripts/index";
-export {createCard, openPopupCard, likeCard, deleteCard};
+export {createCard, likeCard, deleteCard};
 const cardTemplate = document.querySelector('#card-template').content;
 
 function createCard(cardItem, deleteCard, openPopupCard, likeCard) {
@@ -25,6 +24,5 @@ function likeCard(evt) {
 }
 
 function deleteCard(card) {
-    if (card)
-        card.remove();
+    card?.remove();
 }

@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import {initialCards} from './cards';
 import {createCard, likeCard, deleteCard} from '../components/card';
-import {openModal} from '../components/modal';
+import {openModal, closeModal} from '../components/modal';
 
 const content = document.querySelector('.content');
 const placesList = document.querySelector('.places__list');
@@ -43,7 +43,7 @@ function handleProfileSubmit(evt) {
     evt.preventDefault();
     profileTitle.textContent = inputName.value;
     profileDescription.textContent = inputDescription.value;
-    popupProfile.classList.remove('popup_is-opened');
+    closeModal(popupProfile);
 }
 popupProfile.addEventListener('submit', handleProfileSubmit);
 
@@ -60,6 +60,6 @@ function handlerNewCardSubmit(evt) {
         likeCard));
     cardName.value = '';
     cardLink.value = '';
-    popupNewCard.classList.remove('popup_is-opened');
+    closeModal(popupNewCard);
 }
 popupNewCard.addEventListener('submit', handlerNewCardSubmit);

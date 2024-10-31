@@ -1,25 +1,26 @@
 //работа с модальными окнами
-//реализовать функции openModal, closeModal
-//showPopup
 function openModal(popupType) {
     if (popupType) {
-        popupType.addEventListener('click', closeModal);
-        document.addEventListener('keydown', closeModal);
+        popupType.addEventListener('click', handleClosePopup);
+        document.addEventListener('keydown', handleClosePopup);
         popupType.classList.add('popup_is-opened');
     }
 }
 
-//hidePopup
-function closeModal(evt) {
+function handleClosePopup(evt) {
     if (evt.target.className === 'popup__close' || evt.target.classList.contains('popup') || evt.key === 'Escape') {
         document.querySelectorAll('.popup').forEach(popup => {
             if (popup.classList.contains('popup_is-opened')) {
-                popup.classList.remove('popup_is-opened');
-                popup.removeEventListener('click', closeModal);
-                document.removeEventListener('keydown', closeModal);
+                closeModal(popup);
             }
         });
     }
 }
+    
+function closeModal(popupType) { 
+    popupType.removeEventListener('click', handleClosePopup);
+    document.removeEventListener('keydown', handleClosePopup);
+    popupType.classList.remove('popup_is-opened');   
+}
 
-export {openModal};
+export {openModal, closeModal};
